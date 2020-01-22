@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.Login"></activity>
+        <activity android:name=".activity.Base" />
+        <activity android:name=".activity.More" />
+        <activity android:name=".activity.OfficeLocation" />
+        <activity android:name=".activity.HijaziCard" />
+        <activity android:name=".activity.MyReservation" />
+        <activity android:name=".activity.BookBus" />
+        <activity android:name=".activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,3 +1,20 @@
 <resources>
+    <!--app name -->
     <string name="app_name">HijaziTransport</string>
+
+    <!--activity title -->
+    <string name="book_a_bus">Book A Bus</string>
+    <string name="login">Login</string>
+
+    <!--navigation menu title -->
+    <string name="book_bus">Book Bus</string>
+    <string name="my_reservation">My Reservation</string>
+    <string name="hijazi_card">Hijazi Card</string>
+    <string name="office_location">Office Location</string>
+    <string name="more">More</string>
+
+    <!--Text title -->
+    <string name="no_connection">No Connection</string>
+    <string name="hijazi_registration">Hijazi Registration</string>
+
 </resources>

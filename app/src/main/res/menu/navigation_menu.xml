@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/book_bus"
+        android:icon="@drawable/ic_iconmonstr_bus"
+        android:title="@string/book_bus" />
+
+    <item
+        android:id="@+id/my_reservation"
+        android:icon="@drawable/ic_iconmonstr_reservation"
+        android:title="@string/my_reservation" />
+
+    <item
+        android:id="@+id/hijazi_card"
+        android:icon="@drawable/ic_iconmonstr_card"
+        android:title="@string/hijazi_card" />
+
+    <item
+        android:id="@+id/office_location"
+        android:icon="@drawable/ic_offices_buildings"
+        android:title="@string/office_location" />
+
+    <item
+        android:id="@+id/more"
+        android:icon="@drawable/ic_more"
+        android:title="@string/more" />
+
+</menu>
