@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "608890160857",
+    "firebase_url": "https://hijazitransport-d15b1.firebaseio.com",
+    "project_id": "hijazitransport-d15b1",
+    "storage_bucket": "hijazitransport-d15b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608890160857:android:e0b15704d6d033be7f20c8",
+        "android_client_info": {
+          "package_name": "com.example.hijazitransport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608890160857-o28uoaap4od800p8fhpak6mrb64if65v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hijazitransport",
+            "certificate_hash": "6b338daaad82e04d8a1af3b27fe107c5317e353d"
+          }
+        },
+        {
+          "client_id": "608890160857-4284jt0f4onmm9vrv8m176nh74tg4ali.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBzKwN0uc4NM0qWniBV8mlMDQPa5xyAAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608890160857-4284jt0f4onmm9vrv8m176nh74tg4ali.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
