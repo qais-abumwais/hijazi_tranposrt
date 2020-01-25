@@ -5,7 +5,7 @@
     <!--activity title -->
     <string name="book_a_bus">Book A Bus</string>
     <string name="login">Login</string>
-
+    <string name="registration">Registration</string>
     <!--navigation menu title -->
     <string name="book_bus">Book Bus</string>
     <string name="my_reservation">My Reservation</string>
@@ -16,5 +16,7 @@
     <!--Text title -->
     <string name="no_connection">No Connection</string>
     <string name="hijazi_registration">Hijazi Registration</string>
+    <string name="forget_password">Forget Password ?</string>
+    <string name="Do_Not_Have_An_Account_Register">Do Not Have An Account ? Register</string>
 
 </resources>

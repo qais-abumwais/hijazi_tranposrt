@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-
     tools:context=".activity.Login">
 
     <LinearLayout
@@ -18,14 +16,14 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:background="@drawable/hijazi_logo2"/>
+            android:background="@drawable/hijazi_logo2" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view_service_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
             android:layout_marginTop="16dp"
+            app:cardCornerRadius="8dp"
             app:cardElevation="4dp">
 
             <LinearLayout
@@ -38,59 +36,109 @@
                     android:id="@+id/service_home_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
                     android:maxLines="2"
                     android:minLines="2"
-                    android:layout_marginTop="8dp"
-                    android:textSize="22sp"
-                    android:gravity="center"
                     android:text="@string/hijazi_registration"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
-                <View
+
+                <EditText
+                    android:id="@+id/login_email"
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/softGray" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_shape"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="8dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:padding="16dp" />
 
                 <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_shape"
-                android:hint="Email"
-                android:padding="16dp"
-                android:drawablePadding="8dp"
-                android:inputType="textEmailAddress"
-                android:drawableStart="@drawable/ic_email"/>
-
-                <EditText
+                    android:id="@+id/login_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/edit_text_shape"
-                    android:hint="Password"
-                    android:padding="16dp"
+                    android:drawableStart="@drawable/ic_lock"
                     android:drawablePadding="8dp"
+                    android:hint="Password"
                     android:inputType="textPassword"
-                    android:drawableStart="@drawable/ic_lock"/>
+                    android:padding="16dp" />
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="end"
+                    app:mrl_rippleAlpha="0.2"
+                    app:mrl_rippleColor="@color/colorPrimary"
+                    app:mrl_rippleHover="true"
+                    app:mrl_rippleOverlay="true">
+
+                    <TextView
+                        android:id="@+id/login_forget_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="end"
+                        android:text="@string/forget_password"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
+                         />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/softGray" />
 
                 <com.balysv.materialripple.MaterialRippleLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
                     app:mrl_rippleAlpha="0.2"
                     app:mrl_rippleColor="@color/white"
                     app:mrl_rippleHover="true"
                     app:mrl_rippleOverlay="true">
 
                     <Button
-                        android:id="@+id/service_home_know_more"
+                        android:id="@+id/login"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:background="@color/colorPrimary"
-                        android:elevation="25dp"
-                        android:text="kkkkk"
+                        android:layout_height="50dp"
+                        android:background="@drawable/button_shape_green"
+                        android:text="@string/login"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_gravity="center"
+                    app:mrl_rippleAlpha="0.2"
+                    android:layout_marginBottom="16dp"
+                    app:mrl_rippleColor="@color/colorPrimary"
+                    app:mrl_rippleHover="true"
+                    app:mrl_rippleOverlay="true">
+
+                    <TextView
+                        android:id="@+id/login_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="end"
+                        android:text="@string/Do_Not_Have_An_Account_Register"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
+                        />
                 </com.balysv.materialripple.MaterialRippleLayout>
 
             </LinearLayout>
