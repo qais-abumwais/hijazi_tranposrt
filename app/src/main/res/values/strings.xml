@@ -6,17 +6,36 @@
     <string name="book_a_bus">Book A Bus</string>
     <string name="login">Login</string>
     <string name="registration">Registration</string>
+    <string name="reset">Reset</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="trip_schedule">Trip Schedule</string>
+    <string name="edit_profile">Edit Profile</string>
     <!--navigation menu title -->
     <string name="book_bus">Book Bus</string>
     <string name="my_reservation">My Reservation</string>
     <string name="hijazi_card">Hijazi Card</string>
     <string name="office_location">Office Location</string>
     <string name="more">More</string>
+    <string name="update">Update</string>
 
     <!--Text title -->
     <string name="no_connection">No Connection</string>
     <string name="hijazi_registration">Hijazi Registration</string>
     <string name="forget_password">Forget Password ?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="are_you_sure">Are You Sure ?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="Do_Not_Have_An_Account_Register">Do Not Have An Account ? Register</string>
 
+
+    <!--Text validate-->
+    <string name="email_is_not_match">Email Is Not Match</string>
+    <string name="email_is_required">Email Is Required</string>
+    <string name="name_is_required">Name Is Required</string>
+    <string name="password_is_required">Password Is Required</string>
+    <string name="phone_is_required">Phone Number Is Required</string>
+    <string name="phone_is_not_match">Phone Number Is Not Match</string>
+    <string name="password_is_wrong">Password Is Wrong</string>
+    <string name="password_must_be_at_least_6_characters">Password Must Be At Least 6 Characters</string>
 </resources>

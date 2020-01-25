@@ -1,10 +1,6 @@
 package com.example.hijazitransport.activity;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
-
 import com.example.hijazitransport.R;
 
 public class OfficeLocation extends Base {
@@ -23,6 +19,6 @@ public class OfficeLocation extends Base {
 
     @Override
     protected int getNavigationMenuItemId() {
-        return R.id.my_reservation;
+        return R.id.office_location;
     }
 }
