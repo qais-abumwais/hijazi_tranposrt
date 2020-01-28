@@ -17,7 +17,7 @@
     <string name="office_location">Office Location</string>
     <string name="more">More</string>
     <string name="update">Update</string>
-
+    <string name="register">Register</string>
     <!--Text title -->
     <string name="no_connection">No Connection</string>
     <string name="hijazi_registration">Hijazi Registration</string>
@@ -25,6 +25,8 @@
     <string name="reset_password">Reset Password</string>
     <string name="are_you_sure">Are You Sure ?</string>
     <string name="yes">Yes</string>
+    <string name="time">Time :</string>
+    <string name="ticket_price">Ticket Price</string>
     <string name="no">No</string>
     <string name="Do_Not_Have_An_Account_Register">Do Not Have An Account ? Register</string>
 

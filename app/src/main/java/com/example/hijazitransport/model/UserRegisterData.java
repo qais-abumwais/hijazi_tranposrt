@@ -1,7 +1,7 @@
 package com.example.hijazitransport.model;
 
 public class UserRegisterData {
-    String name,email,address,phoneNumber,birthdate,gender,hijaziCardd;
+    private String name,email,address,phoneNumber,birthdate,gender,hijaziCardd;
 
     public UserRegisterData() {
     }

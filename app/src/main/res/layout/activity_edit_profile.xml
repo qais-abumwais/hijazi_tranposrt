@@ -9,6 +9,7 @@
     tools:context=".activity.Login">
 
     <ScrollView
+        android:id="@+id/scroll_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -74,6 +75,30 @@
                 android:drawablePadding="8dp"
                 android:hint="Gender"
                 android:padding="16dp" />
+
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="start"
+                app:mrl_rippleAlpha="0.2"
+                app:mrl_rippleColor="@color/colorPrimary"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <TextView
+                    android:id="@+id/edit_reset_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="end"
+                    android:text="@string/reset_password"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    />
+            </com.balysv.materialripple.MaterialRippleLayout>
 
 
             <com.balysv.materialripple.MaterialRippleLayout

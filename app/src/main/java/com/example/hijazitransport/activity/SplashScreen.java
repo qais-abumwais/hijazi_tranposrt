@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.hijazitransport.R;
+import com.example.hijazitransport.model.UserRegisterData;
 import com.example.hijazitransport.util.UserLoginFlag;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreen extends AppCompatActivity {
-
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private UserRegisterData userRegisterData=new UserRegisterData("qays","qays","qays","qays","qays","qays","qays");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
