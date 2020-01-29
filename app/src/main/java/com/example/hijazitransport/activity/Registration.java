@@ -86,7 +86,7 @@ public class Registration extends Base {
                     userRegisterData.setName(fullName.getText().toString());
                     userRegisterData.setPhoneNumber(phone.getText().toString());
                     userRegisterData.setAddress(address.getText().toString());
-                    userRegisterData.setGender(address.getText().toString());
+                    userRegisterData.setGender(gender.getText().toString());
                     userRegisterData.setBirthdate(birthdate.getText().toString());
                     userRegisterData.setHijaziCardd("");
                     createAccount();

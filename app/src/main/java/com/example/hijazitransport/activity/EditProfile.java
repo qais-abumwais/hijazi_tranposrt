@@ -7,17 +7,22 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hijazitransport.R;
 import com.example.hijazitransport.model.UserRegisterData;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 public class EditProfile extends Base {
 
@@ -37,9 +43,12 @@ public class EditProfile extends Base {
     private int checkedItem = 0;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private DatabaseReference myRef = database.getReference().child("Users").child(mAuth.getUid());
+    private DatabaseReference myRef = database.getReference().child("Users").child(Objects.requireNonNull(mAuth.getUid()));
     private UserRegisterData userRegisterData=new UserRegisterData();
     private Button update;
+    private ScrollView scrollView;
+    private ProgressBar progressBar;
+    private TextView resetPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +56,30 @@ public class EditProfile extends Base {
 
         prepareView();
 
+        scrollView.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                scrollView.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
                 userRegisterData =dataSnapshot.getValue(UserRegisterData.class);
+                assert userRegisterData != null;
+                name.setText(userRegisterData.getName());
+                phone.setText(userRegisterData.getPhoneNumber());
+
+                if (!(userRegisterData.getAddress().equals(""))){
+                    address.setText(userRegisterData.getAddress());
+                }
+
+                if (!userRegisterData.getGender().equals("")){
+                    gender.setText(userRegisterData.getGender());
+                }
+
+                if (!userRegisterData.getBirthdate().equals("")){
+                    birthdate.setText(userRegisterData.getBirthdate());
+                }
             }
 
             @Override
@@ -58,20 +87,6 @@ public class EditProfile extends Base {
             }
         });
 
-        name.setText(userRegisterData.getName());
-        phone.setText(userRegisterData.getPhoneNumber());
-
-        if (!userRegisterData.getAddress().equals("")){
-            address.setText(userRegisterData.getAddress());
-        }
-
-        if (!userRegisterData.getGender().equals("")){
-            gender.setText(userRegisterData.getGender());
-        }
-
-        if (!userRegisterData.getBirthdate().equals("")){
-            birthdate.setText(userRegisterData.getBirthdate());
-        }
 
         birthdate.setFocusable(false);
         birthdate.setClickable(true);
@@ -99,17 +114,49 @@ public class EditProfile extends Base {
                 showAlertDialog();
             }
         });
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userRegisterData.setName(name.getText().toString());
+                userRegisterData.setAddress(address.getText().toString());
+                userRegisterData.setBirthdate(birthdate.getText().toString());
+                userRegisterData.setGender(gender.getText().toString());
+                userRegisterData.setPhoneNumber(phone.getText().toString());
+                progressBar.setVisibility(View.VISIBLE);
+                myRef.setValue(userRegisterData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(EditProfile.this,"Update profile is successful",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+            }
+        });
+
+        resetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(EditProfile.this,ResetPassword.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
 
     private void prepareView(){
+        resetPassword=findViewById(R.id.edit_reset_password);
         name=findViewById(R.id.update_full_name);
         address=findViewById(R.id.update_address);
         phone=findViewById(R.id.update_phone_number);
         birthdate=findViewById(R.id.update_birthdate);
         gender=findViewById(R.id.update_Gender);
         update=findViewById(R.id.update);
+        progressBar=findViewById(R.id.update_progress_bar);
+        scrollView=findViewById(R.id.scroll_edit);
     }
 
     private void createCalender() {
