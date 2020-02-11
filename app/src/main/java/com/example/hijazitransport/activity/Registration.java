@@ -51,6 +51,8 @@ public class Registration extends Base {
         setContentView(R.layout.activity_registration);
 
         prepareView();
+
+        //delete keyboard when pressed on birthdate edt and show calender
         birthdate.setFocusable(false);
         birthdate.setClickable(true);
         birthdate.setKeyListener(null);
@@ -65,12 +67,11 @@ public class Registration extends Base {
             }
         });
 
+        //delete keyboard when pressed on gender edt and show alert dialog with single choice items male,female
         gender.setFocusable(false);
         gender.setClickable(true);
         gender.setKeyListener(null);
         gender.onEditorAction(EditorInfo.IME_ACTION_DONE);
-
-
         gender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,10 +79,12 @@ public class Registration extends Base {
             }
         });
 
+        //when register button is pressed check entered data before create account for user
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (validate()) {
+                    //after checked data , he can create account
                     userRegisterData.setEmail(email.getText().toString());
                     userRegisterData.setName(fullName.getText().toString());
                     userRegisterData.setPhoneNumber(phone.getText().toString());
@@ -89,12 +92,29 @@ public class Registration extends Base {
                     userRegisterData.setGender(gender.getText().toString());
                     userRegisterData.setBirthdate(birthdate.getText().toString());
                     userRegisterData.setHijaziCardd("");
+
                     createAccount();
                 }
             }
         });
     }
 
+    @Override
+    protected void initScreen(Toolbar toolbar) {
+        toolbar.setTitle(R.string.registration);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+    }
+
+    @Override
+    protected int getNavigationMenuItemId() {
+        return 0;
+    }
 
     private void prepareView() {
         fullName = findViewById(R.id.register_full_name);
@@ -110,9 +130,11 @@ public class Registration extends Base {
     }
 
     private void createAccount() {
+        userLoginFlag=new UserLoginFlag(this);
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
-        userLoginFlag=new UserLoginFlag(this);
+
         progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -120,10 +142,13 @@ public class Registration extends Base {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            assert user != null;
                             myRef.child("Users").child(user.getUid()).setValue(userRegisterData);
                             Toast.makeText(Registration.this, "Registration is successful",
                                     Toast.LENGTH_SHORT).show();
-                            userLoginFlag.setYourFlag(true);
+
+                            userLoginFlag.setFlag(true);
                             progressBar.setVisibility(View.GONE);
 
                             Intent intent=new Intent(Registration.this,BookBus.class);
@@ -146,8 +171,10 @@ public class Registration extends Base {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
                 String myFormat = "yyyy-MM-dd";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
                 birthdate.setText(sdf.format(myCalendar.getTime()));
             }
         };
@@ -173,7 +200,6 @@ public class Registration extends Base {
 
 
     private boolean validate() {
-
         if (fullName.getText().toString().isEmpty()) {
             fullName.setError(getResources().getString(R.string.name_is_required));
             return false;
@@ -224,20 +250,4 @@ public class Registration extends Base {
         return true;
     }
 
-    @Override
-    protected void initScreen(Toolbar toolbar) {
-        toolbar.setTitle(R.string.registration);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp));
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-    }
-
-    @Override
-    protected int getNavigationMenuItemId() {
-        return 0;
-    }
 }

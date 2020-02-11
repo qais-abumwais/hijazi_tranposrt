@@ -22,12 +22,13 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
 
-    private TextView forgetPassword,register;
-    private EditText email,password;
+    private TextView forgetPassword, register;
+    private EditText email, password;
     private Button login;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private UserLoginFlag userLoginFlag;
     private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,55 +36,56 @@ public class Login extends AppCompatActivity {
 
         prepareView();
 
+        //when pressed on registration text go to registration screen
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Login.this,Registration.class);
+                Intent intent = new Intent(Login.this, Registration.class);
                 startActivity(intent);
             }
         });
 
-        userLoginFlag=new UserLoginFlag(this);
-
+        userLoginFlag = new UserLoginFlag(this);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validate()){
+                //Check the entered data before using firebase FirebaseAuth
+                if (validate()) {
                     signIn();
                 }
             }
         });
 
-
+        //go to reset password screen
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Login.this,ResetPassword.class);
+                Intent intent = new Intent(Login.this, ResetPassword.class);
                 startActivity(intent);
             }
         });
     }
 
-    private void prepareView(){
-        forgetPassword=findViewById(R.id.login_forget_password);
-        register=findViewById(R.id.login_register);
-        login=findViewById(R.id.login);
-        email=findViewById(R.id.login_email);
-        password=findViewById(R.id.login_password);
-        progressBar=findViewById(R.id.login_progress_bar);
+    private void prepareView() {
+        forgetPassword = findViewById(R.id.login_forget_password);
+        register = findViewById(R.id.login_register);
+        login = findViewById(R.id.login);
+        email = findViewById(R.id.login_email);
+        password = findViewById(R.id.login_password);
+        progressBar = findViewById(R.id.login_progress_bar);
     }
 
 
-    private void signIn(){
+    private void signIn() {
         progressBar.setVisibility(View.VISIBLE);
         mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            userLoginFlag.setYourFlag(true);
+                            userLoginFlag.setFlag(true);
                             progressBar.setVisibility(View.GONE);
-                            Intent intent=new Intent(Login.this,BookBus.class);
+                            Intent intent = new Intent(Login.this, BookBus.class);
                             startActivity(intent);
 
                         } else {
@@ -116,6 +118,4 @@ public class Login extends AppCompatActivity {
         }
         return true;
     }
-
-
 }

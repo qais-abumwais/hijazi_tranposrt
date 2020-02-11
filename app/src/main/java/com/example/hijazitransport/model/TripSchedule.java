@@ -1,11 +1,9 @@
 package com.example.hijazitransport.model;
 
-import java.util.List;
+public class TripSchedule {
+    private String title,times;
 
-public class TripScheduleModel {
-    String title,times;
-
-    public TripScheduleModel(String title, String times) {
+    public TripSchedule(String title, String times) {
         this.title = title;
         this.times = times;
     }

@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hijazitransport.R;
-import com.example.hijazitransport.model.LocationModel;
+import com.example.hijazitransport.model.Location;
 import com.example.hijazitransport.model.PermissionCallBack;
 
 import java.util.List;
@@ -22,10 +22,10 @@ import java.util.List;
 public class LocationRecyclerAdapter extends RecyclerView.Adapter<LocationRecyclerAdapter.ViewHolder> {
 
     private Context context;
-    private List<LocationModel> locationModels;
+    private List<Location> locationModels;
     private PermissionCallBack permissionCallBack;
 
-    public LocationRecyclerAdapter(Context context, List<LocationModel> locationModels
+    public LocationRecyclerAdapter(Context context, List<Location> locationModels
             , PermissionCallBack permissionCallBack) {
         this.context = context;
         this.locationModels = locationModels;
@@ -44,7 +44,6 @@ public class LocationRecyclerAdapter extends RecyclerView.Adapter<LocationRecycl
         holder.label.setText(locationModels.get(position).getTitle());
         holder.description.setText(locationModels.get(position).getWorkong());
         holder.phoneNumberOne.setText(locationModels.get(position).getPhoneOne());
-
 
         if (locationModels.get(position).getPhoneTow().equals("")){
             holder.linearLayoutPhoneTwo.setVisibility(View.GONE);
@@ -67,7 +66,6 @@ public class LocationRecyclerAdapter extends RecyclerView.Adapter<LocationRecycl
             }
         });
 
-
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,11 +80,12 @@ public class LocationRecyclerAdapter extends RecyclerView.Adapter<LocationRecycl
         return locationModels.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView phoneNumberOne, phoneNumberTwo ,label, description;
         LinearLayout linearLayoutPhoneTwo;
         ImageView imageView;
-        public ViewHolder(@NonNull View itemView) {
+
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             phoneNumberOne = itemView.findViewById(R.id.location_phone_number_one_text_view);
             phoneNumberTwo = itemView.findViewById(R.id.location_phone_number_two_text_view);

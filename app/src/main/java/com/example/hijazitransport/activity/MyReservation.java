@@ -1,9 +1,8 @@
 package com.example.hijazitransport.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.hijazitransport.R;
 

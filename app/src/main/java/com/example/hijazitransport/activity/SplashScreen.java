@@ -1,29 +1,28 @@
 package com.example.hijazitransport.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.hijazitransport.R;
-import com.example.hijazitransport.model.UserRegisterData;
 import com.example.hijazitransport.util.UserLoginFlag;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreen extends AppCompatActivity {
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private UserRegisterData userRegisterData=new UserRegisterData("qays","qays","qays","qays","qays","qays","qays");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        //pause screen 2000 millisecond as an splash screen
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 UserLoginFlag userLoginFlag=new UserLoginFlag(SplashScreen.this);
-                if (userLoginFlag.getYourFlag()){
+                //check if user is login or not using UserLoginFlag class
+                if (userLoginFlag.getFlag()){
                     Intent splashIntent=new Intent(SplashScreen.this, BookBus.class);
                     SplashScreen.this.startActivity(splashIntent);
                     SplashScreen.this.finish();
