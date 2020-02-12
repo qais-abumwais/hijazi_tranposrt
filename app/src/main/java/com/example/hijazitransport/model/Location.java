@@ -1,9 +1,9 @@
 package com.example.hijazitransport.model;
 
-public class LocationModel {
-    String map,title,phoneOne,phoneTow,workong;
+public class Location {
+    private String map,title,phoneOne,phoneTow,workong;
 
-    public LocationModel(String map, String title, String phoneOne, String phoneTow, String workong) {
+    public Location(String map, String title, String phoneOne, String phoneTow, String workong) {
         this.map = map;
         this.title = title;
         this.phoneOne = phoneOne;

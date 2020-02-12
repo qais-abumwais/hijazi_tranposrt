@@ -10,13 +10,14 @@ import com.example.hijazitransport.activity.TripSchedule;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoreModel {
+public class More {
     private AppCompatActivity Root;
     private int label;
-    private MoreModelEnum moreModelEnum;
+    private MoreEnum moreModelEnum;
     private int icon;
-    public MoreModel(AppCompatActivity root, int label, MoreModelEnum moreModelEnum, int icon) {
-        Root = root;
+
+    public More(AppCompatActivity root, int label, MoreEnum moreModelEnum, int icon) {
+        this.Root = root;
         this.label = label;
         this.moreModelEnum = moreModelEnum;
         this.icon = icon;
@@ -38,11 +39,11 @@ public class MoreModel {
         this.label = label;
     }
 
-    public MoreModelEnum getMoreModelEnum() {
+    public MoreEnum getMoreModelEnum() {
         return moreModelEnum;
     }
 
-    public void setMoreModelEnum(MoreModelEnum moreModelEnum) {
+    public void setMoreModelEnum(MoreEnum moreModelEnum) {
         this.moreModelEnum = moreModelEnum;
     }
 
@@ -54,13 +55,13 @@ public class MoreModel {
         this.icon = icon;
     }
 
-    public static List<MoreModel> getMoreMenu(){
-        MoreModel signOut=new MoreModel(null, R.string.sign_out,MoreModelEnum.LogOut,R.drawable.ic_iconmonstr_log_out);
+    public static List<More> getMoreMenu() {
+        More signOut = new More(null, R.string.sign_out, MoreEnum.LogOut, R.drawable.ic_iconmonstr_log_out);
 
-        MoreModel TripSchedule=new MoreModel(new TripSchedule(), R.string.trip_schedule,MoreModelEnum.Activity,R.drawable.ic_iconmonstr_calendar_more);
-        MoreModel EditProfile=new MoreModel(new EditProfile(), R.string.edit_profile,MoreModelEnum.Activity,R.drawable.ic_iconmonstr_edit_6);
+        More TripSchedule = new More(new TripSchedule(), R.string.trip_schedule, MoreEnum.Activity, R.drawable.ic_iconmonstr_calendar_more);
+        More EditProfile = new More(new EditProfile(), R.string.edit_profile, MoreEnum.Activity, R.drawable.ic_iconmonstr_edit_6);
 
-        List<MoreModel> moreModelList=new ArrayList<>();
+        List<More> moreModelList = new ArrayList<>();
 
         moreModelList.add(TripSchedule);
         moreModelList.add(EditProfile);

@@ -1,7 +1,7 @@
 package com.example.hijazitransport.model;
 
 public class UserRegisterData {
-    private String name,email,address,phoneNumber,birthdate,gender,hijaziCardd;
+    private String name,email,address,phoneNumber,birthdate,gender,hijaziCard;
 
     public UserRegisterData() {
     }
@@ -13,15 +13,15 @@ public class UserRegisterData {
         this.phoneNumber = phoneNumber;
         this.birthdate = birthdate;
         this.gender = gender;
-        this.hijaziCardd=hijaziCardd;
+        this.hijaziCard=hijaziCardd;
     }
 
     public String getHijaziCardd() {
-        return hijaziCardd;
+        return hijaziCard;
     }
 
     public void setHijaziCardd(String hijaziCardd) {
-        this.hijaziCardd = hijaziCardd;
+        this.hijaziCard = hijaziCardd;
     }
 
     public String getName() {

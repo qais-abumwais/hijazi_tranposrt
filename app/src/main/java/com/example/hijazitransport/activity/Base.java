@@ -32,20 +32,20 @@ public abstract class Base extends AppCompatActivity implements BottomNavigation
 
         mNavigationView = mBaseLayout.findViewById(R.id.navigation);
         Toolbar toolbar = mBaseLayout.findViewById(R.id.app_toolbar);
-        noConnection=mBaseLayout.findViewById(R.id.no_connection);
+        noConnection = mBaseLayout.findViewById(R.id.no_connection);
         BottomNavigationViewHelper.removeShiftMode(mNavigationView);
         mNavigationView.setOnNavigationItemSelectedListener(this);
 
         getLayoutInflater().inflate(view, mContentLayout, true);
 
-        if(cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected()){
+        if (cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected()) {
             noConnection.setVisibility(View.GONE);
             mContentLayout.setVisibility(View.VISIBLE);
             getNavigationMenuItemId();
             initScreen(toolbar);
             updateNavigationBarState();
             super.setContentView(mBaseLayout);
-        }else {
+        } else {
             noConnection.setVisibility(View.VISIBLE);
             mContentLayout.setVisibility(View.GONE);
             getNavigationMenuItemId();

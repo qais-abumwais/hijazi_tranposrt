@@ -1,6 +1,6 @@
 package com.example.hijazitransport.model;
 
-public enum MoreModelEnum {
+public enum MoreEnum {
     LogOut,
     Activity,
 }

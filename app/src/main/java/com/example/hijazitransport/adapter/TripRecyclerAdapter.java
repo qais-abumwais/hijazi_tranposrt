@@ -10,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hijazitransport.R;
-import com.example.hijazitransport.model.TripScheduleModel;
+import com.example.hijazitransport.model.TripSchedule;
 
 import java.util.List;
 
 public class TripRecyclerAdapter extends RecyclerView.Adapter<TripRecyclerAdapter.ViewHolder> {
 
     private Context context;
-    private List<TripScheduleModel> tripScheduleModels;
+    private List<TripSchedule> tripScheduleModels;
 
-    public TripRecyclerAdapter(Context context, List<TripScheduleModel> tripScheduleModels) {
+    public TripRecyclerAdapter(Context context, List<TripSchedule> tripScheduleModels) {
         this.context = context;
         this.tripScheduleModels = tripScheduleModels;
     }
@@ -42,9 +42,9 @@ public class TripRecyclerAdapter extends RecyclerView.Adapter<TripRecyclerAdapte
         return tripScheduleModels.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView title,times;
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             title=itemView.findViewById(R.id.trip_title);
             times=itemView.findViewById(R.id.trip_time);

@@ -30,6 +30,7 @@ public class ResetPassword extends AppCompatActivity {
 
         prepareView();
 
+        //check entered data before reset password
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
