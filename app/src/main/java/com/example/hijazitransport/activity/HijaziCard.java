@@ -48,7 +48,7 @@ public class HijaziCard extends Base {
         progressBar.setVisibility(View.VISIBLE);
 
         //retrieve data from firebase
-        myRef= database.getReference().child("Users").child(Objects.requireNonNull(mAuth.getUid())).child("hijaziCard");
+        myRef= database.getReference().child("Users").child(Objects.requireNonNull(mAuth.getUid())).child("Information").child("hijaziCard");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -77,7 +77,8 @@ public class HijaziCard extends Base {
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!(cardNumber.getText().toString().isEmpty()) && cardNumber.getText().toString().length() > 9) {
+                String subCardNumber=cardNumber.getText().toString().substring(0,3);
+                if (!(cardNumber.getText().toString().isEmpty()) && cardNumber.getText().toString().length() > 9 && subCardNumber.equals("000")) {
                     confirmUpload();
                 } else {
                     cardNumber.setError(getResources().getString(R.string.card_number_is_not_match));

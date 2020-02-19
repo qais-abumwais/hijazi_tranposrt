@@ -184,7 +184,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.6"
                     android:gravity="center"
-                    android:text="0"
+                    android:text="1"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -209,6 +209,12 @@
                 </com.balysv.materialripple.MaterialRippleLayout>
 
             </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/person"/>
 
 
             <View
@@ -240,7 +246,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 app:mrl_rippleAlpha="0.2"
                 app:mrl_rippleColor="@color/white"
                 app:mrl_rippleHover="true"

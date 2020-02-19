@@ -3,6 +3,9 @@ package com.example.hijazitransport.model;
 public class CardNumber {
     private String CardNumber,CardCount;
 
+    public CardNumber() {
+    }
+
     public CardNumber(String cardNumber, String cardCount) {
         CardNumber = cardNumber;
         CardCount = cardCount;

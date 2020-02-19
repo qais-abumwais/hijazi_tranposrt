@@ -1,27 +1,20 @@
 package com.example.hijazitransport.model;
 
 public class UserRegisterData {
-    private String name,email,address,phoneNumber,birthdate,gender,hijaziCard;
+    private String name,email,address,phoneNumber,birthdate,gender;
+    private CardNumber hijaziCard;
 
     public UserRegisterData() {
     }
 
-    public UserRegisterData(String name, String email, String address, String phoneNumber, String birthdate, String gender,  String hijaziCardd) {
+    public UserRegisterData(String name, String email, String address, String phoneNumber, String birthdate, String gender, CardNumber hijaziCard) {
         this.name = name;
         this.email = email;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.birthdate = birthdate;
         this.gender = gender;
-        this.hijaziCard=hijaziCardd;
-    }
-
-    public String getHijaziCardd() {
-        return hijaziCard;
-    }
-
-    public void setHijaziCardd(String hijaziCardd) {
-        this.hijaziCard = hijaziCardd;
+        this.hijaziCard = hijaziCard;
     }
 
     public String getName() {
@@ -72,6 +65,11 @@ public class UserRegisterData {
         this.gender = gender;
     }
 
+    public CardNumber getHijaziCard() {
+        return hijaziCard;
+    }
 
-
+    public void setHijaziCard(CardNumber hijaziCard) {
+        this.hijaziCard = hijaziCard;
+    }
 }

@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.hijazitransport.R;
+import com.example.hijazitransport.model.CardNumber;
 import com.example.hijazitransport.model.UserRegisterData;
 import com.example.hijazitransport.util.UserLoginFlag;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -91,7 +92,8 @@ public class Registration extends Base {
                     userRegisterData.setAddress(address.getText().toString());
                     userRegisterData.setGender(gender.getText().toString());
                     userRegisterData.setBirthdate(birthdate.getText().toString());
-                    userRegisterData.setHijaziCardd("");
+                    CardNumber cardNumber=new CardNumber("","");
+                    userRegisterData.setHijaziCard(cardNumber);
 
                     createAccount();
                 }
@@ -144,7 +146,7 @@ public class Registration extends Base {
                             FirebaseUser user = mAuth.getCurrentUser();
 
                             assert user != null;
-                            myRef.child("Users").child(user.getUid()).setValue(userRegisterData);
+                            myRef.child("Users").child(user.getUid()).child("Information").setValue(userRegisterData);
                             Toast.makeText(Registration.this, "Registration is successful",
                                     Toast.LENGTH_SHORT).show();
 
