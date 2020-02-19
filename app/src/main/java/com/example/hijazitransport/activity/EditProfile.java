@@ -61,7 +61,7 @@ public class EditProfile extends Base {
         progressBar.setVisibility(View.VISIBLE);
 
         //retrieve data from firebase
-        myRef=database.getReference().child("Users").child(Objects.requireNonNull(mAuth.getUid()));
+        myRef=database.getReference().child("Users").child(Objects.requireNonNull(mAuth.getUid())).child("Information");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
