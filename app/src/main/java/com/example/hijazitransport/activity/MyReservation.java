@@ -1,6 +1,7 @@
 package com.example.hijazitransport.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -23,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MyReservation extends Base {
@@ -42,6 +44,8 @@ public class MyReservation extends Base {
         prepareView();
         recyclerView=findViewById(R.id.my_reservation_recycler);
 
+
+
         recyclerView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         myRef=database.getReference().child("Users").child(mAuth.getUid()).child("Reservation");
@@ -52,6 +56,7 @@ public class MyReservation extends Base {
                     userBookingInformations.add(dataSnapshot1.getValue(UserBookingInformation.class));
                 }
 
+                Collections.reverse(userBookingInformations);
                 createRecyclerViewOfReservation(userBookingInformations);
                 recyclerView.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);

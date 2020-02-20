@@ -38,6 +38,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
@@ -218,51 +219,54 @@ public class BookBus extends Base {
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
 
-//        String itemSelected = timeSpn.getSelectedItem().toString();
-//        String Hour = itemSelected.substring(0, itemSelected.indexOf(":"));
-//        String Min = itemSelected.substring(itemSelected.indexOf(":") + 1);
-//        Log.d("Hour", Hour);
-//        Log.d("Min", Min);
-//
-//        if (Min.substring(0, 1).equals("0")) {
-//            Min = Min.substring(1);
-//        }
-//        if (hour == Integer.parseInt(Hour)) {
-//            if ((minute >= Integer.parseInt(Min))) {
-//                timeSpn.setBackground(getResources().getDrawable(R.drawable.spinner_red_boarder));
-//                return;
-//            }
-//        } else if (hour > Integer.parseInt(Hour)) {
-//            timeSpn.setBackground(getResources().getDrawable(R.drawable.spinner_red_boarder));
-//            return;
-//        }
-//        else{
-//            timeSpn.setBackground(getResources().getDrawable(R.drawable.spinner_black_boarder));
-//        }
+        String currentDate = new SimpleDateFormat("M-dd-yyyy", Locale.getDefault()).format(new Date());
+        currentDate+=" ";
 
-        String fromAndTo = "";
-        if (!fromSpn.getSelectedItem().toString().equals("Yarmouk-University")) {
-            fromAndTo = fromSpn.getSelectedItem().toString().toLowerCase();
-            fromAndTo += "_to_";
+        if (currentDate.equals(date.getText().toString())) {
+            String itemSelected = timeSpn.getSelectedItem().toString();
+            String Hour = itemSelected.substring(0, itemSelected.indexOf(":"));
+            String Min = itemSelected.substring(itemSelected.indexOf(":") + 1);
+            Log.d("Hour", Hour);
+            Log.d("Min", Min);
 
-            if (!toSpn.getSelectedItem().toString().equals("Yarmouk-University")) {
-                fromAndTo += toSpn.getSelectedItem().toString().toLowerCase();
-            } else {
-                String To = toSpn.getSelectedItem().toString().toLowerCase();
-                fromAndTo += To.substring(0, To.indexOf("-"));
+            if (Min.substring(0, 1).equals("0")) {
+                Min = Min.substring(1);
             }
-        } else {
-            String from = fromSpn.getSelectedItem().toString().toLowerCase();
-            fromAndTo += from.substring(0, from.indexOf("-"));
-            fromAndTo += "_to_";
-            if (!toSpn.getSelectedItem().toString().equals("Yarmouk-University")) {
-                fromAndTo += toSpn.getSelectedItem().toString().toLowerCase();
+            if (hour == Integer.parseInt(Hour)) {
+                if ((minute >= Integer.parseInt(Min))) {
+                    timeSpn.setBackground(getResources().getDrawable(R.drawable.spinner_red_boarder));
+                    return;
+                }
+            } else if (hour > Integer.parseInt(Hour)) {
+                timeSpn.setBackground(getResources().getDrawable(R.drawable.spinner_red_boarder));
+                return;
             } else {
-                String To = toSpn.getSelectedItem().toString().toLowerCase();
-                fromAndTo += To.substring(0, To.indexOf("-"));
+                timeSpn.setBackground(getResources().getDrawable(R.drawable.spinner_black_boarder));
             }
         }
 
+            String fromAndTo = "";
+            if (!fromSpn.getSelectedItem().toString().equals("Yarmouk-University")) {
+                fromAndTo = fromSpn.getSelectedItem().toString().toLowerCase();
+                fromAndTo += "_to_";
+
+                if (!toSpn.getSelectedItem().toString().equals("Yarmouk-University")) {
+                    fromAndTo += toSpn.getSelectedItem().toString().toLowerCase();
+                } else {
+                    String To = toSpn.getSelectedItem().toString().toLowerCase();
+                    fromAndTo += To.substring(0, To.indexOf("-"));
+                }
+            } else {
+                String from = fromSpn.getSelectedItem().toString().toLowerCase();
+                fromAndTo += from.substring(0, from.indexOf("-"));
+                fromAndTo += "_to_";
+                if (!toSpn.getSelectedItem().toString().equals("Yarmouk-University")) {
+                    fromAndTo += toSpn.getSelectedItem().toString().toLowerCase();
+                } else {
+                    String To = toSpn.getSelectedItem().toString().toLowerCase();
+                    fromAndTo += To.substring(0, To.indexOf("-"));
+                }
+            }
 
         progressBar.setVisibility(View.VISIBLE);
         myRef = database.getReference().child("Hijazi").child(fromAndTo);
@@ -327,6 +331,7 @@ public class BookBus extends Base {
 
                             myRef = database.getReference().child("Users").child(mAuth.getUid()).child("Information");
                             myRef.setValue(userRegisterData);
+                            Toast.makeText(BookBus.this, "Your Booking Is Confirmed", Toast.LENGTH_LONG).show();
 
                         }
 
@@ -408,6 +413,7 @@ public class BookBus extends Base {
 
                                         myRef = database.getReference().child("Users").child(mAuth.getUid()).child("Information");
                                         myRef.setValue(userRegisterData);
+                                        Toast.makeText(BookBus.this, "Your Booking Is Confirmed", Toast.LENGTH_LONG).show();
                                     }
 
                                     @Override
@@ -472,6 +478,7 @@ public class BookBus extends Base {
 
                                     myRef = database.getReference().child("Users").child(mAuth.getUid()).child("Information");
                                     myRef.setValue(userRegisterData);
+                                    Toast.makeText(BookBus.this, "Your Booking Is Confirmed", Toast.LENGTH_LONG).show();
 
                                 }
 
