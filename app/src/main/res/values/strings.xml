@@ -1,6 +1,6 @@
 <resources>
     <!--app name -->
-    <string name="app_name">HijaziTransport</string>
+    <string name="app_name">Hijazi Transport</string>
 
     <!--activity title -->
     <string name="book_a_bus">Book A Bus</string>

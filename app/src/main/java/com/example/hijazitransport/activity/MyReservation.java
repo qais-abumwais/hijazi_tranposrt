@@ -35,6 +35,7 @@ public class MyReservation extends Base {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private DatabaseReference myRef;
     private List<UserBookingInformation> userBookingInformations=new ArrayList<>();
+    private View noReservation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +57,17 @@ public class MyReservation extends Base {
                     userBookingInformations.add(dataSnapshot1.getValue(UserBookingInformation.class));
                 }
 
-                Collections.reverse(userBookingInformations);
-                createRecyclerViewOfReservation(userBookingInformations);
-                recyclerView.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.GONE);
+                if (userBookingInformations.size()==0){
+                    progressBar.setVisibility(View.GONE);
+                    noReservation.setVisibility(View.VISIBLE);
+                }else{
+                    noReservation.setVisibility(View.GONE);
+                    Collections.reverse(userBookingInformations);
+                    createRecyclerViewOfReservation(userBookingInformations);
+                    recyclerView.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
+                }
+
             }
 
             @Override
@@ -79,7 +87,7 @@ public class MyReservation extends Base {
     private void prepareView(){
         recyclerView=findViewById(R.id.my_reservation_recycler);
         progressBar=findViewById(R.id.my_reservation_progress_bar);
-
+        noReservation=findViewById(R.id.no_reservations);
     }
 
     @Override
