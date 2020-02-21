@@ -67,7 +67,13 @@ public class MyReservationRecyclerAdapter extends RecyclerView.Adapter<MyReserva
         holder.date.setText(userBookingInformations.get(position).getDate());
         holder.time.setText(userBookingInformations.get(position).getTime());
         holder.passenger.setText(userBookingInformations.get(position).getNumberOfPassenger());
-        holder.payment.setText(userBookingInformations.get(position).getPayment());
+        if(userBookingInformations.get(position).getPayment().equals("Cash")){
+             double cash=Double.parseDouble(userBookingInformations.get(position).getNumberOfPassenger());
+             cash*=2.30;
+             holder.payment.setText(String.valueOf(cash)+" Jd");
+        }else {
+            holder.payment.setText(userBookingInformations.get(position).getPayment());
+        }
 
         holder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,11 +132,11 @@ public class MyReservationRecyclerAdapter extends RecyclerView.Adapter<MyReserva
                             Calendar c = new GregorianCalendar();
                             int hour = c.get(Calendar.HOUR_OF_DAY);
                             int minute = c.get(Calendar.MINUTE);
+
                             String itemSelected = userBookingInformations.get(position).getTime();
                             String Hour = itemSelected.substring(0, itemSelected.indexOf(":"));
                             String Min = itemSelected.substring(itemSelected.indexOf(":") + 1);
-                            Log.d("Hour", Hour);
-                            Log.d("Min", Min);
+
 
                             if (Min.substring(0, 1).equals("0")) {
                                 Min = Min.substring(1);
@@ -144,6 +150,7 @@ public class MyReservationRecyclerAdapter extends RecyclerView.Adapter<MyReserva
                             } else {
                                 dateLast=userBookingInformations.get(position).getDate();
                                 timeLast= userBookingInformations.get(position).getTime();
+
                                 myRef = database.getReference().child("Users").child(mAuth.getUid()).child("Reservation").child(dateLast+ " " +timeLast);
                                 myRef.removeValue();
 
@@ -175,6 +182,7 @@ public class MyReservationRecyclerAdapter extends RecyclerView.Adapter<MyReserva
                                         for (final DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
                                             if (dateAndTime.equals(dataSnapshot1.getKey())){
                                                 for (final DataSnapshot dataSnapshot2:dataSnapshot1.getChildren()){
+
                                                     myRef=database.getReference().child("Users").child(Objects.requireNonNull(mAuth.getUid())).child("Information");
                                                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                                         @Override
@@ -188,6 +196,7 @@ public class MyReservationRecyclerAdapter extends RecyclerView.Adapter<MyReserva
                                                                         bus=Integer.parseInt(dataSnapshot.getValue(String.class));
                                                                         passengerCount=Integer.parseInt(passnegrCount2);
                                                                         bus-=passengerCount;
+
                                                                         myRef=database.getReference().child("Hijazi").child(from+to).child(dateAndTime).child(userRegisterData.getName()+" "+userRegisterData.getPhoneNumber()).child("payment");
                                                                         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                                                             @Override
@@ -195,11 +204,13 @@ public class MyReservationRecyclerAdapter extends RecyclerView.Adapter<MyReserva
                                                                                 if (dataSnapshot.getValue().toString().equals("Cash")) {
                                                                                     myRef = database.getReference().child("Hijazi").child(from + to).child(dataSnapshot1.getKey()).child(dataSnapshot2.getKey());
                                                                                     myRef.removeValue();
+
                                                                                     myRef = database.getReference().child("Hijazi").child(from + to).child(dataSnapshot1.getKey()).child("BusPassenger");
                                                                                     myRef.setValue(String.valueOf(bus));
                                                                                 }else{
                                                                                     myRef = database.getReference().child("Hijazi").child(from + to).child(dataSnapshot1.getKey()).child(dataSnapshot2.getKey());
                                                                                     myRef.removeValue();
+
                                                                                     myRef = database.getReference().child("Hijazi").child(from + to).child(dataSnapshot1.getKey()).child("BusPassenger");
                                                                                     myRef.setValue(String.valueOf(bus));
 
@@ -211,6 +222,7 @@ public class MyReservationRecyclerAdapter extends RecyclerView.Adapter<MyReserva
                                                                                     cardNumber.setCardNumber(userRegisterData.getHijaziCard().getCardNumber());
 
                                                                                     userRegisterData.setHijaziCard(cardNumber);
+
                                                                                     myRef=database.getReference().child("Users").child(mAuth.getUid()).child("Information");
                                                                                     myRef.setValue(userRegisterData);
                                                                                 }

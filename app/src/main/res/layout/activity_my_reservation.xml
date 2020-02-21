@@ -12,6 +12,13 @@
         android:layout_height="wrap_content"
         android:overScrollMode="never"/>
 
+    <include
+        android:id="@+id/no_reservations"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/no_reservation"
+        android:visibility="gone"/>
+
     <ProgressBar
         android:id="@+id/my_reservation_progress_bar"
         style="?android:attr/progressBarStyleLarge"
