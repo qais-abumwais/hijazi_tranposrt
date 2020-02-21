@@ -3,8 +3,6 @@ package com.example.hijazitransport.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hijazitransport.R;
-import com.example.hijazitransport.activity.BookBus;
-import com.example.hijazitransport.activity.Login;
 import com.example.hijazitransport.model.CardNumber;
 import com.example.hijazitransport.model.UserBookingInformation;
 import com.example.hijazitransport.model.UserRegisterData;
-import com.example.hijazitransport.util.UserLoginFlag;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -56,7 +51,7 @@ public class MyReservationRecyclerAdapter extends RecyclerView.Adapter<MyReserva
     @NonNull
     @Override
     public MyReservationRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.linear_layout_my_reservation, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.linear_layout_my_reservation_row, parent, false);
         return new ViewHolder(view);
     }
 
