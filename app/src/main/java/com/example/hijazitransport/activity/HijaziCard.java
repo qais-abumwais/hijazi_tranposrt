@@ -78,7 +78,7 @@ public class HijaziCard extends Base {
             @Override
             public void onClick(View v) {
                 String subCardNumber=cardNumber.getText().toString().substring(0,3);
-                if (!(cardNumber.getText().toString().isEmpty()) && cardNumber.getText().toString().length() > 9 && subCardNumber.equals("000")) {
+                if (!(cardNumber.getText().toString().isEmpty()) && cardNumber.getText().toString().length() > 9 && subCardNumber.equals("00")) {
                     confirmUpload();
                 } else {
                     cardNumber.setError(getResources().getString(R.string.card_number_is_not_match));
