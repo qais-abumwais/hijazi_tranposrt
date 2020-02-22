@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_birthdate_moeny" />
+                android:src="@drawable/ic_iconmonstr_banknote" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:gravity="center"
-                android:text=": 2.30 $"
+                android:text=": 2.30 JD"
                 android:textColor="@color/colorPrimary"
                 android:textSize="22sp"
                 android:textStyle="bold" />

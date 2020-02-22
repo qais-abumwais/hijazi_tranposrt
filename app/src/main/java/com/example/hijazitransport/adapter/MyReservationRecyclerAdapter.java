@@ -62,6 +62,7 @@ public class MyReservationRecyclerAdapter extends RecyclerView.Adapter<MyReserva
         holder.date.setText(userBookingInformations.get(position).getDate());
         holder.time.setText(userBookingInformations.get(position).getTime());
         holder.passenger.setText(userBookingInformations.get(position).getNumberOfPassenger());
+
         if(userBookingInformations.get(position).getPayment().equals("Cash")){
              double cash=Double.parseDouble(userBookingInformations.get(position).getNumberOfPassenger());
              cash*=2.30;

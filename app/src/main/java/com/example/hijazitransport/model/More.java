@@ -57,7 +57,6 @@ public class More {
 
     public static List<More> getMoreMenu() {
         More signOut = new More(null, R.string.sign_out, MoreEnum.LogOut, R.drawable.ic_iconmonstr_log_out);
-
         More TripSchedule = new More(new TripSchedule(), R.string.trip_schedule, MoreEnum.Activity, R.drawable.ic_iconmonstr_calendar_more);
         More EditProfile = new More(new EditProfile(), R.string.edit_profile, MoreEnum.Activity, R.drawable.ic_iconmonstr_edit_6);
 

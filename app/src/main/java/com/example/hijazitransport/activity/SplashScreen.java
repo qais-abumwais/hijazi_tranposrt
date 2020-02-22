@@ -15,15 +15,16 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SplashScreen extends AppCompatActivity {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        Places places=new Places("Irbid To Amman","Amman To Irbid",
-                "Yarmouk To Amman","Amman To Yarmouk");
-        myRef=database.getReference();
-        myRef.child("Hijazi").setValue(places);
+//        Places places=new Places("Irbid To Amman","Amman To Irbid",
+//                "Yarmouk To Amman","Amman To Yarmouk");
+//        myRef=database.getReference();
+//        myRef.child("Hijazi").setValue(places);
 
 
         //pause screen 2000 millisecond as an splash screen

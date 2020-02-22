@@ -1,10 +1,8 @@
 package com.example.hijazitransport.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
@@ -12,9 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hijazitransport.R;
-import com.example.hijazitransport.adapter.LocationRecyclerAdapter;
 import com.example.hijazitransport.adapter.MyReservationRecyclerAdapter;
-import com.example.hijazitransport.model.Location;
 import com.example.hijazitransport.model.UserBookingInformation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,6 +46,7 @@ public class MyReservation extends Base {
 
         recyclerView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
+
         myRef=database.getReference().child("Users").child(mAuth.getUid()).child("Reservation");
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
