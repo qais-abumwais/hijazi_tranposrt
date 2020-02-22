@@ -183,7 +183,7 @@ public class MyReservationRecyclerAdapter extends RecyclerView.Adapter<MyReserva
                                                         @Override
                                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                             userRegisterData=dataSnapshot.getValue(UserRegisterData.class);
-                                                            if (dataSnapshot2.getKey().equals(userRegisterData.getName()+" "+userRegisterData.getPhoneNumber())){
+                                                            if (dataSnapshot2.getKey().equals(mAuth.getUid())){
                                                                 myRef=database.getReference().child("Hijazi").child(from+to).child(dateAndTime).child("BusPassenger");
                                                                 myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                                                     @Override
@@ -192,7 +192,7 @@ public class MyReservationRecyclerAdapter extends RecyclerView.Adapter<MyReserva
                                                                         passengerCount=Integer.parseInt(passnegrCount2);
                                                                         bus-=passengerCount;
 
-                                                                        myRef=database.getReference().child("Hijazi").child(from+to).child(dateAndTime).child(userRegisterData.getName()+" "+userRegisterData.getPhoneNumber()).child("payment");
+                                                                        myRef=database.getReference().child("Hijazi").child(from+to).child(dateAndTime).child(mAuth.getUid()).child("payment");
                                                                         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                                                             @Override
                                                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

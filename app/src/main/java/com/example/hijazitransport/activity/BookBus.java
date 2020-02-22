@@ -320,7 +320,7 @@ public class BookBus extends Base {
                             userBookingInformation.setNumberOfPassenger(passnegerCount.getText().toString());
                             userBookingInformation.setTime(timeSpn.getSelectedItem().toString());
 
-                            myRef = database.getReference().child("Hijazi").child(finalFromAndTo).child(date.getText().toString() + " " + timeSpn.getSelectedItem()).child(userRegisterData.getName() + " " + userRegisterData.getPhoneNumber());
+                            myRef = database.getReference().child("Hijazi").child(finalFromAndTo).child(date.getText().toString() + " " + timeSpn.getSelectedItem()).child(mAuth.getUid());
                             myRef.setValue(hijaziBookingInformation);
 
                             myRef = database.getReference().child("Hijazi").child(finalFromAndTo).child(date.getText().toString() + " " + timeSpn.getSelectedItem()).child("BusPassenger");
@@ -402,7 +402,7 @@ public class BookBus extends Base {
                                         userBookingInformation.setNumberOfPassenger(passnegerCount.getText().toString());
                                         userBookingInformation.setTime(timeSpn.getSelectedItem().toString());
 
-                                        myRef = database.getReference().child("Hijazi").child(finalFromAndTo).child(date.getText().toString() + " " + timeSpn.getSelectedItem()).child(userRegisterData.getName() + " " + userRegisterData.getPhoneNumber());
+                                        myRef = database.getReference().child("Hijazi").child(finalFromAndTo).child(date.getText().toString() + " " + timeSpn.getSelectedItem()).child(mAuth.getUid());
                                         myRef.setValue(hijaziBookingInformation);
 
                                         myRef = database.getReference().child("Hijazi").child(finalFromAndTo).child(date.getText().toString() + " " + timeSpn.getSelectedItem()).child("BusPassenger");
@@ -467,7 +467,7 @@ public class BookBus extends Base {
                                     userBookingInformation.setNumberOfPassenger(passnegerCount.getText().toString());
                                     userBookingInformation.setTime(timeSpn.getSelectedItem().toString());
 
-                                    myRef = database.getReference().child("Hijazi").child(finalFromAndTo).child(date.getText().toString() + " " + timeSpn.getSelectedItem()).child(userRegisterData.getName() + " " + userRegisterData.getPhoneNumber());
+                                    myRef = database.getReference().child("Hijazi").child(finalFromAndTo).child(date.getText().toString() + " " + timeSpn.getSelectedItem()).child(mAuth.getUid());
                                     myRef.setValue(hijaziBookingInformation);
 
                                     myRef = database.getReference().child("Hijazi").child(finalFromAndTo).child(date.getText().toString() + " " + timeSpn.getSelectedItem()).child("BusPassenger");
